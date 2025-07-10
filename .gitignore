@@ -210,3 +210,7 @@ __marimo__/
 
 #MacOS files
 .DS_Store
+
+
+#Data files
+*.csv
