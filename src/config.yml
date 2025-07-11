@@ -5,9 +5,10 @@ S3_BUCKET: medical-qa-data
 # Preprocessing Pipeline
 RANDOM_SEED : 42
 CHUNK_MAX_LENGTH : 512
+CHUNK_OVERLAP: 200
 TEST_DATA_FRAC : .2
-EMBEDDING_MODEL: 
-
+EMBEDDING_MODEL: 'bge-base-en-v1.5'
+NEGATIVES_N : 15
 
 # Training
 
