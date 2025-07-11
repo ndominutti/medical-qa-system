@@ -16,9 +16,9 @@ class S3Manager:
         return boto3.Session()
 
     @staticmethod
-    def get_client(service_name: str):
+    def get_client():
         return boto3.client(
-            service_name,
+            "s3",
             aws_access_key_id=AWS_KEY,
             aws_secret_access_key=AWS_SECRET,
             region_name=AWS_REGION,
