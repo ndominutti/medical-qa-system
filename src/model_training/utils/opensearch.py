@@ -4,6 +4,7 @@ from tqdm import tqdm
 import boto3
 import os
 import logging
+from typing import List
 
 AWS_REGION = os.getenv('AWS_REGION')
 MAPPING = {
@@ -31,7 +32,9 @@ MAPPING = {
 
 
 class OpenSearchManager:
-
+    """
+    Manages connections and operations for an OpenSearch cluster.
+    """
     def __init__(self, host:str):
         service = 'es'
         credentials = boto3.Session().get_credentials()
@@ -46,7 +49,18 @@ class OpenSearchManager:
                         vector_field='vector_field'
                     )
 
-    def create_index(self, index_name:str):
+    def create_index(self, index_name:str) -> None:
+        """
+        Creates an OpenSearch index with the predefined mapping.
+        If the index already exists, logs a warning and skips creation.
+
+        Args:
+            index_name (str): Name of the index to create.
+
+        Returns:
+            dict or None: The response from the OpenSearch client if created,
+                          or None if the index already exists.
+        """
         try:
             return self.client.indices.create(
                 index=index_name,
@@ -59,7 +73,22 @@ class OpenSearchManager:
                 raise
 
 
-    def bulk_ingestion(self, index_name:str, corpus_text: List[str], corpus_embeddings: List[List[float]], request_timeout:int=240):
+    def bulk_ingestion(self, index_name:str, corpus_text: List[str], corpus_embeddings: List[List[float]], request_timeout:int=240) -> None:
+        """
+        Performs bulk ingestion of text chunks and their vector embeddings into an OpenSearch index.
+    
+        Each text-embedding pair is indexed as a document with a 'chunk' field and a 'vector_field' 
+        (or the name specified in the index mapping).
+    
+        Args:
+            index_name (str): Name of the OpenSearch index where documents will be ingested.
+            corpus_text (List[str]): List of text chunks to be indexed.
+            corpus_embeddings (List[List[float]]): Corresponding list of embedding vectors.
+            request_timeout (int, optional): Timeout (in seconds) for the bulk request. Defaults to 240.
+    
+        Returns:
+            None
+        """
         actions = [
             {
                 "_index": index_name,
