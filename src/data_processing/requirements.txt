@@ -1,0 +1,8 @@
+llama-index==0.12.48 
+numpy==2.2.6 
+pandas==2.3.1
+langchain==0.3.26
+boto3==1.39.4
+sentence-transformers==5.0.0
+torch==2.6.0
+datasets==4.0.0
