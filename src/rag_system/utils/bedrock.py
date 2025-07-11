@@ -39,14 +39,14 @@ class BedrockManager:
     def ask(
         self,
         query: str,
-        context: List[str],
         model_id: str,
         system_prompt: str,
         temperature: float,
         top_p: float,
         max_output_tokens: int,
+        context: List[str] = None,
     ):
-        context_str = self._process_context(context)
+        context_str = self._process_context(context) if context else ""
         prompt = self._format_prompt(query, system_prompt, context_str)
         payload = json.dumps(
             {
