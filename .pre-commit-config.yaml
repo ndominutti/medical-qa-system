@@ -6,3 +6,8 @@ repos:
         types_or: [ python, pyi ]
       - id: ruff-format
         types_or: [ python, pyi ]
+  
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.1 
+    hooks:
+      - id: gitleaks
