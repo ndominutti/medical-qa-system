@@ -7,3 +7,4 @@ boto3==1.39.4
 sentence-transformers==5.0.0
 torch==2.6.0
 pytrec_eval==0.5
+opensearch-py==3.0.0
