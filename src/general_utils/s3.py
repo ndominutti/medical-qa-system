@@ -26,6 +26,21 @@ class S3Manager:
 
     @log()
     @staticmethod
+    def download_files(
+        boto3_client,
+        local_path: str,
+        files_to_download: List[str],
+        bucket_name: str,
+    ):
+        for file in files_to_download:
+            boto3_client.download_file(
+                bucket_name,
+                file,
+                f"{local_path}/{file}"
+            )
+
+    @log()
+    @staticmethod
     def download_folder(boto3_client, bucket, prefix, local):
         objs = boto3_client.list_objects_v2(Bucket=bucket, Prefix=prefix)
         for obj in objs.get("Contents", []):
@@ -42,10 +57,11 @@ class S3Manager:
         local_path: str,
         files_to_upload: List[str],
         bucket_name: str,
+        bucket_key:str=""
     ):
         for file in files_to_upload:
             boto3_client.upload_file(
                 f"{local_path}/{file}",
                 bucket_name,
-                file,
+                f"{local_path}{file}",
             )
