@@ -33,11 +33,7 @@ class S3Manager:
         bucket_name: str,
     ):
         for file in files_to_download:
-            boto3_client.download_file(
-                bucket_name,
-                file,
-                f"{local_path}/{file}"
-            )
+            boto3_client.download_file(bucket_name, file, f"{local_path}/{file}")
 
     @log()
     @staticmethod
@@ -57,7 +53,7 @@ class S3Manager:
         local_path: str,
         files_to_upload: List[str],
         bucket_name: str,
-        bucket_key:str=""
+        bucket_key: str = "",
     ):
         for file in files_to_upload:
             boto3_client.upload_file(
