@@ -1,0 +1,31 @@
+#General
+QUERY_INSTRUCTION_AT_RETRIEVAL: "Represent this sentence for searching relevant passages:"
+S3_BUCKET: medical-qa-data
+
+# Preprocessing Pipeline
+RANDOM_SEED : 42
+CHUNK_MAX_LENGTH : 512
+CHUNK_OVERLAP: 200
+TEST_DATA_FRAC : .2
+EMBEDDING_MODEL: 'bge-base-en-v1.5'
+NEGATIVES_N : 15
+
+# Training
+
+
+# RAG System
+TEMPERATURE: 0.2
+TOP_P: 0.1
+MODEL: meta.llama3-3-70b-instruct-v1:0
+MAX_OUTPUT_TOKENS: 500
+ITEMS_TO_RETRIEVE: 3
+BEDROCK_CURRENT_PROMPT_ID: 
+OPENSEARCH_INDEX_URL: https://search-medical-qa-system-wllp2yik3gws7durfruiomvfky.us-east-2.es.amazonaws.com/embedding-finetuned-v1
+SYSTEM_PROMPT : "
+  You are a knowledgeable and empathetic medical assistant. Your task is to answer patients' questions strictly based on the context provided below. 
+  Do not include any information outside of this context. If the answer is not contained within the context, respond politely that you don’t have enough information to answer.
+  Do not mention the context to the user, he doesn't knows about it.
+  
+  Context
+    {CONTEXT}
+  "

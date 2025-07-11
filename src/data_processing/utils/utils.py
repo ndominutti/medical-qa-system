@@ -4,9 +4,8 @@ import pandas as pd
 
 
 class TripletsMiner:
-    def __init__(self, sentence_embedding_model, random_seed):
+    def __init__(self, random_seed):
         random.seed(random_seed)
-        self.model = sentence_embedding_model
         self.TYPE_TO_FUNC_MAP = {"soft": self._soft_mine, "hard": self._hard_mine}
         self.random_seed = random_seed
 
