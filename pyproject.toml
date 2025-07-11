@@ -1,0 +1,8 @@
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = ["*/outputs/", "*data/", "*model", ".venv/", "*/.venv/", "*/.mypy_cache/", "*/__pycache__/", "jupyter_cache/", "*/jupyter_cache/", "*/.ipynb_checkpoints/", "*/static/"]
+
+[tool.ruff.lint]
+select = ["E", "F", "B", "I"]
+ignore = ["E501"]
