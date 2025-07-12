@@ -1,11 +1,13 @@
-Implementation of a processing pipeline in charge of:
+Implementation of the processing pipeline
 
-* reading the dataframe
-* cleaning the data
-* chunking the answers when needed
-* preparing the data in to the needed format for the training step
-* saving the data into S3
+Responsible for:
+
+- Reading the dataframe.
+- Cleaning the data.
+- Chunking the answers when needed.
+- Preparing the data in the required format for the training step.
+- Saving the processed data to S3.
 
 ---
 
-Disclaimer: this pipeline was implemented in a jupyter notebook just because of the lack of time to work on this process. In a production environment this process should be handled by services like a Sagemaker Preprocessing Pipeline.
+**Disclaimer:** This pipeline was implemented in a Jupyter notebook due to time constraints for this assignment. In a production environment, this process should be handled by dedicated services such as a SageMaker Processing or Preprocessing Pipeline.

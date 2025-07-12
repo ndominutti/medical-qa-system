@@ -214,3 +214,8 @@ __marimo__/
 src/model_training/model/*
 src/model_training/cache
 src/model_training/mlruns
+src/mlruns
+src/model_training/.model
+src/model_training/.trained_model
+src/model_training/.models
+src/rag_system/model/*
