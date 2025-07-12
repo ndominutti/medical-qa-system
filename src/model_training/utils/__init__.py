@@ -1,5 +1,4 @@
-
-from .validation import Validator
 from .opensearch import OpenSearchManager
+from .validation import Validator
 
-__all__ = ['Validator','OpenSearchManager']
+__all__ = ["Validator", "OpenSearchManager"]

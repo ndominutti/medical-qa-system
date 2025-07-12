@@ -8,7 +8,8 @@ class TripletsMiner:
     """
     Generates negative samples (triplets) for training tasks by mining from a DataFrame.
     """
-    def __init__(self, random_seed:int):
+
+    def __init__(self, random_seed: int):
         random.seed(random_seed)
         self.TYPE_TO_FUNC_MAP = {"soft": self._soft_mine, "hard": self._hard_mine}
         self.random_seed = random_seed

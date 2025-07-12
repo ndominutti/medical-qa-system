@@ -15,6 +15,7 @@ class BedrockManager:
     """
     Manages interactions with AWS Bedrock runtime to invoke language models.
     """
+
     def __init__(self):
         self.client = boto3.client(
             "bedrock-runtime",

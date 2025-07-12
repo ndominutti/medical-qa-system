@@ -31,7 +31,7 @@ class S3Manager:
         local_path: str,
         files_to_download: List[str],
         bucket_name: str,
-    )  -> None:
+    ) -> None:
         """
         Downloads multiple files from an S3 bucket to a local directory.
 
@@ -40,7 +40,7 @@ class S3Manager:
             local_path (str): Local directory path where the files will be saved.
             files_to_download (List[str]): List of S3 object keys (paths) to download.
             bucket_name (str): Name of the S3 bucket containing the files.
-    
+
         Returns:
             None
         """
@@ -49,17 +49,17 @@ class S3Manager:
 
     @log()
     @staticmethod
-    def download_folder(boto3_client, bucket:str, prefix:str, local:str)  -> None:
+    def download_folder(boto3_client, bucket: str, prefix: str, local: str) -> None:
         """
         Downloads all objects from a given S3 prefix to a local directory,
         preserving the relative folder structure.
-    
+
         Args:
             boto3_client: An instantiated boto3 S3 client used to perform operations.
             bucket (str): Name of the S3 bucket.
             prefix (str): Prefix (path) in the bucket representing the "folder" to download.
             local (str): Local directory path where the downloaded files will be saved.
-    
+
         Returns:
             None
         """
@@ -82,14 +82,14 @@ class S3Manager:
     ) -> None:
         """
         Uploads multiple files from a local directory to an S3 bucket.
-    
+
         Args:
             boto3_client: An instantiated boto3 S3 client used to perform the upload.
             local_path (str): Path to the local directory containing the files to upload.
             files_to_upload (List[str]): List of filenames (relative to local_path) to upload.
             bucket_name (str): Name of the target S3 bucket.
             bucket_key (str, optional): S3 prefix (folder path) to prepend to uploaded file keys. Defaults to "".
-    
+
         Returns:
             None
         """
